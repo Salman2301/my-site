@@ -68,7 +68,7 @@
   div:after {
     content: "";
     width: 10px;
-    @apply bg-major-2;
+    @apply bg-bg2;
     
     margin-left: -4px;
     visibility: hidden;
@@ -81,7 +81,7 @@
 
 
   .input {
-    color: white;
+    @apply text-t2;
     @apply bg-transparent;
     @apply w-full;
     caret-color: rgba(0,0,0,0);

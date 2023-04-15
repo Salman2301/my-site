@@ -1,6 +1,7 @@
 import { tick } from 'svelte';
 import { Writable, writable } from 'svelte/store';
 import { components, newComponent } from './components';
+import { setTheme } from '../Commands/themeCommand';
 
 export const availableCommands = {
   clear: {
@@ -23,6 +24,10 @@ export const availableCommands = {
   time: {
     description: 'show the current time',
     action: () => newComponent("time")
+  },
+  theme: {
+    description: 'set the theme for the page',
+    action: (cmd) => setTheme(cmd)
   }
 } as const;
 
@@ -32,7 +37,7 @@ export const newCommandStore: Writable<string> = writable('');
 
 export const historyCommands: Writable<string[]> = writable([]);
 
-export async function setNewCommand(command: CommandKey | '') {
+export async function setNewCommand(command: any) {
   if (command === '') newComponent('input');
   if (!command) return;
 
@@ -43,13 +48,14 @@ export async function setNewCommand(command: CommandKey | '') {
 
 export async function handleCommand(command: CommandKey) {
   if (!command) return;
-  if (!Object.keys(availableCommands).includes(command)) {
-    newComponent('noCommand', { error: `command '${command}' not found` });
+  const [ firstWord ] = command.split(' ');
+  if (!Object.keys(availableCommands).includes(firstWord)) {
+    newComponent('error', { message: `command '${command}' not found` });
     return;
   }
 
-  if (availableCommands[command].action) {
-    availableCommands[command].action()
+  if (availableCommands[firstWord].action) {
+    availableCommands[firstWord].action(command)
   }
   else 
     console.error("command not implemented?");

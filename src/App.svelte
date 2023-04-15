@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { components, newComponent } from "./lib/store/components";
+  import { setTheme } from "./lib/Commands/themeCommand";
   
   function handleFocus() {
     const lastComponent = $components[$components.length - 1];
@@ -12,6 +13,14 @@
 
   onMount(()=>{
     newComponent("input");
+
+    const currTheme = localStorage.getItem("curr-theme");
+
+    if( currTheme ) {
+      setTheme(currTheme);
+    }
+
+
   });
 
 </script>
@@ -34,8 +43,8 @@
     width: 100%;
     max-width: 100%;
     height: 100%;
-    @apply bg-major-1;
-    @apply text-minor-3;
+    @apply bg-bg1;
+    @apply text-t2;
     overflow: scroll;
     @apply pl-4;
   }
