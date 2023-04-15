@@ -1,6 +1,5 @@
 <script lang="ts">
-  import { handleCommand, newCommandStore, setNewCommand } from "../store/set-command";
-  import { setTheme, themes } from "./themeCommand";
+  import { getTheme, setTheme, themeStore, themes } from "./themeCommand";
 
   
   function handleClick(themeName: string) {
@@ -15,6 +14,7 @@
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <li
       on:click={()=>handleClick(themeName)}
+      class:active={$themeStore === themeName}
     >
       {themeName}
     </li>
@@ -27,10 +27,15 @@
   }
   li {
     @apply ml-4;
-    list-style-type:circle;
+    list-style-type:disc;
     @apply select-none cursor-pointer;
   }
   li:hover {
     @apply text-hl1;
+    filter: brightness(75%);
+  }
+  li.active {
+    @apply text-hl1;
+    filter: brightness(100%);
   }
 </style>

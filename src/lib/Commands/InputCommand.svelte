@@ -81,7 +81,7 @@
 
 
   .input {
-    @apply text-t2;
+    @apply text-hl1;
     @apply bg-transparent;
     @apply w-full;
     caret-color: rgba(0,0,0,0);
