@@ -59,7 +59,7 @@ li {
   @apply mb-4;
 }
 li:hover {
-  @apply text-red-400;
-  @apply bg-dark-gray;
+  @apply text-minor-1;
+  @apply bg-major-2;
 }
 </style>

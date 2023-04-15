@@ -16,7 +16,3 @@
 </script>
 
 {time}
-
-<style lang="postcss">
-
-</style>

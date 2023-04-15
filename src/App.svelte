@@ -16,6 +16,7 @@
 
 </script>
 
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="container" on:click={handleFocus}>
   {#each $components as item}
     <svelte:component
@@ -33,8 +34,8 @@
     width: 100%;
     max-width: 100%;
     height: 100%;
-    background-color: black;
-    color: white;
+    @apply bg-major-1;
+    @apply text-minor-3;
     overflow: scroll;
     @apply pl-4;
   }

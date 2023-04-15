@@ -68,7 +68,7 @@
   div:after {
     content: "";
     width: 10px;
-    background-color: rgba(168, 168, 168, 0.5);
+    @apply bg-major-2;
     
     margin-left: -4px;
     visibility: hidden;

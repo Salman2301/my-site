@@ -1,0 +1,8 @@
+:root {
+  --major-1: #000;    /* Background */
+  --major-2: #696969; /* Background */
+
+  --minor-1: #EF4444; /* Highlight  */
+  --minor-2: #A0A0A0; /* Text       */
+  --minor-3: #fff;    /* Text       */
+}

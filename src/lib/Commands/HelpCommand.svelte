@@ -25,12 +25,13 @@
 <style lang="postcss">
   .heading {
     @apply mt-1 mb-4;
-    @apply text-light-gray;
+    @apply text-minor-2;
   }
   li {
     @apply cursor-pointer;
+    @apply text-minor-3;
   }
   li:hover {
-    @apply text-red-500;
+    @apply text-minor-1;
   }
 </style>

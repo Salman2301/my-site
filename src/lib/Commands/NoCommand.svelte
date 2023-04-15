@@ -3,7 +3,3 @@
 </script>
 
 <div>{error}</div>
-
-<style lang="postcss">
-
-</style>
