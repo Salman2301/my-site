@@ -12,7 +12,12 @@
      * of JS in `.svelte` files.
      */
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "@component/*": ["src/lib/component/*"],
+      "@store/*": ["src/lib/store/*"],
+    }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
   "exclude": ["node_modules/*"]

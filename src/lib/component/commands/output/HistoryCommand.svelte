@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { historyCommands } from "../../../store/command";
+  import { historyCommands } from "@store/command";
 
 
   function getLast10History() {

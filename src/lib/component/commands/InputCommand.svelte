@@ -1,6 +1,6 @@
 <script lang="ts">
   import { tick } from "svelte";
-  import { historyCommands, setNewCommand } from "../../store/command";
+  import { historyCommands, setNewCommand } from "@store/command";
 
   export let componentInstance: HTMLDivElement;
   export let disabled: boolean = false;

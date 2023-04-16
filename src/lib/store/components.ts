@@ -1,6 +1,6 @@
 import { tick } from 'svelte';
 import { Writable, get, writable } from 'svelte/store';
-import { ComponentList, ComponentListKey } from '../component/commands/map';
+import { ComponentList, ComponentListKey } from '@component/commands/map';
 
 interface Components {
   key: string;
