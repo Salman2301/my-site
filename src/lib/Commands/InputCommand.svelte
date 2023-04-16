@@ -31,13 +31,18 @@
   }
 
   function getLastCommand(move: "up" | "down") {
-    const len = $historyCommands.length;
-    if( lastCommandPosition === undefined ) lastCommandPosition = len;
-
-    move === "up" ? lastCommandPosition-- : lastCommandPosition++;
-
-    if(lastCommandPosition < 0) lastCommandPosition = 0;
-    if(lastCommandPosition > len) lastCommandPosition = len - 1;
+    let len = $historyCommands.length;
+    if( lastCommandPosition === undefined ) {
+      lastCommandPosition = len - 1;
+      return $historyCommands[lastCommandPosition];
+    }
+    if( move === "up" && lastCommandPosition > 0) {
+      lastCommandPosition--;
+    }
+    else if( move === "down" ){
+      if(lastCommandPosition < len ) lastCommandPosition++;
+      else return "";
+    }
 
     return $historyCommands[lastCommandPosition];
   }
