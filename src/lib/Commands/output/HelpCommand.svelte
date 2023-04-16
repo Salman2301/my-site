@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { components } from "../store/components";
-  import { availableCommands, setNewCommand } from "../store/set-command";
+  import { components } from "../../store/components";
+  import { availableCommands, setNewCommand } from "../../store/set-command";
 
   function handleClick(command: any) {
     const lastComponent = $components[$components.length - 1];
@@ -19,8 +19,6 @@
 {#each Object.keys(availableCommands) as command}
   <li on:click={()=>handleClick(command)}>{command}</li>
 {/each}
-
-<p class="eof">----------------------------</p>
 
 <style lang="postcss">
   .heading {

@@ -1,10 +1,10 @@
 import Input from "./InputCommand.svelte";
-import ErrorCommand from "./ErrorCommand.svelte";
-import HelpCommand from "./HelpCommand.svelte";
-import WhoamiCommand from "./WhoamiCommand.svelte";
-import HistoryCommand from "./HistoryCommand.svelte";
-import TimeCommand from "./TimeCommand.svelte";
-import ThemeCommand from "./ThemeCommand.svelte";
+import ErrorCommand from "./output/ErrorCommand.svelte";
+import HelpCommand from "./output/HelpCommand.svelte";
+import WhoamiCommand from "./output/WhoamiCommand.svelte";
+import HistoryCommand from "./output/HistoryCommand.svelte";
+import TimeCommand from "./output/TimeCommand.svelte";
+import ThemeCommand from "./output/ThemeCommand.svelte";
 
 export const ComponentList = {
   input: Input,
@@ -13,7 +13,7 @@ export const ComponentList = {
   whoami: WhoamiCommand,
   history: HistoryCommand,
   time: TimeCommand,
-  "theme-list": ThemeCommand
+  theme: ThemeCommand
 } as const;
 
 export type ComponentListKey = keyof typeof ComponentList;

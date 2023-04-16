@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { components, newComponent } from "./lib/store/components";
-  import { setTheme } from "./lib/Commands/themeCommand";
+  import { setTheme } from "./lib/commands/output/ThemeCommand.svelte";
   
   function handleFocus() {
     const lastComponent = $components[$components.length - 1];
