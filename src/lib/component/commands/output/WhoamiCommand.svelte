@@ -1,17 +1,22 @@
 <script lang="ts">
+  import { icons } from "../../icon/map";
+
 
   export let links = [
     {
       name: 'Github',
-      url: 'https://github.com/salman2301'
+      url: 'https://github.com/salman2301',
+      icon: 'github',
     },
     {
       name: 'Twitter',
-      url: 'https://twitter.com/salman2301'
+      url: 'https://twitter.com/salman2301',
+      icon: 'twitter'
     },
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/asalman2301/'
+      url: 'https://www.linkedin.com/in/asalman2301/',
+      icon: 'linkedin'
     }
   ]
 </script>
@@ -35,8 +40,11 @@
     <a
       href="{link.url}"
       target="_blank"
-      class="border border-t1"
+      class="btn"
     >
+      <div class="icon" style="scale:0.85">
+        <svelte:component this={icons[link.icon]} />
+      </div>
      <li>
         {link.name}
       </li>
@@ -69,19 +77,21 @@
   ul {
     @apply flex gap-2 flex-wrap;
   }
-  a {
+  .btn {
+    @apply border border-t1;
     width: 120px;
     @apply text-center rounded;
     @apply cursor-pointer;
-    @apply mb-4;
+    @apply mb-4 px-4;
+    @apply flex justify-start gap-2;
   }
-  a:hover {
+
+  .btn:hover {
     @apply text-hl1;
     @apply bg-bg2;
   }
   li {
     @apply text-center text-xs;
-    width: 120px;
     height: 30px;
     @apply flex items-center justify-center;
     @apply font-bold;
