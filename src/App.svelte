@@ -15,11 +15,7 @@
     newComponent("input");
 
     const currTheme = localStorage.getItem("curr-theme");
-
-    if( currTheme ) {
-      setTheme(currTheme);
-    }
-
+    if( currTheme ) setTheme(currTheme);
 
   });
 
@@ -43,9 +39,9 @@
     width: 100%;
     max-width: 100%;
     height: 100%;
+    overflow: scroll;
     @apply bg-bg1;
     @apply text-t2;
-    overflow: scroll;
     @apply pl-4;
   }
 </style>

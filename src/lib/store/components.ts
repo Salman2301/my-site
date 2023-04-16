@@ -8,8 +8,7 @@ interface Components {
   props: Record<string, unknown>;
 }
 
-export const components: Writable<Components[]> = writable([])
-
+export const components: Writable<Components[]> = writable([]);
 
 export async function newComponent(key: ComponentListKey, props: Record<string, unknown> = {}) {
   let $components = get(components);
