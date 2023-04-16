@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { components } from "../../store/components";
-  import { availableCommands, setNewCommand } from "../../store/set-command";
+  import { components } from "../../../store/components";
+  import { availableCommands, setNewCommand } from "../../../store/command";
 
   function handleClick(command: any) {
     const lastComponent = $components[$components.length - 1];

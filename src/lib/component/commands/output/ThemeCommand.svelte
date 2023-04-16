@@ -1,6 +1,6 @@
 <script lang="ts" context="module">
   import { tick } from "svelte";
-  import { newComponent } from "../../store/components";
+  import { newComponent } from "../../../store/components";
   import { Writable, writable } from "svelte/store";
 
   export const themeStore: Writable<THEME_NAME> = writable(getTheme() as THEME_NAME);

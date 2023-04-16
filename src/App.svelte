@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { components, newComponent } from "./lib/store/components";
-  import { setTheme } from "./lib/commands/output/ThemeCommand.svelte";
+  import { setTheme } from "./lib/component/commands/output/ThemeCommand.svelte";
   
   function handleFocus() {
     const lastComponent = $components[$components.length - 1];
@@ -42,6 +42,6 @@
     overflow: scroll;
     @apply bg-bg1;
     @apply text-t2;
-    @apply pl-4;
+    @apply px-4;
   }
 </style>

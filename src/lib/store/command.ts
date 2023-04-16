@@ -1,7 +1,7 @@
 import { tick } from 'svelte';
 import { Writable, writable } from 'svelte/store';
 import { components, newComponent } from './components';
-import { setTheme } from '../commands/output/ThemeCommand.svelte';
+import { setTheme } from '../component/commands/output/ThemeCommand.svelte';
 
 export const availableCommands = {
   clear: {
