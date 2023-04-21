@@ -173,6 +173,7 @@
 
   span p {
     white-space: pre;
+    line-height: 12px;
   }
 
   .symbol span:nth-child(1) {

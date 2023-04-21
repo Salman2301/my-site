@@ -9,7 +9,8 @@ export default defineConfig({
     alias:{
       "@": path.resolve(__dirname, './src'),
       "@component": path.resolve(__dirname, './src/lib/component'),
-      "@store": path.resolve(__dirname, './src/lib/store')
+      "@command": path.resolve(__dirname, './src/lib/component/Terminal/commands'),
+      "@store": path.resolve(__dirname, './src/lib/component/Terminal/store')
     }
   },
 

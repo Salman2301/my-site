@@ -1,6 +1,9 @@
 <script lang="ts">
-  import { historyCommands } from "@store/command";
+  import { getContext } from "svelte";
+  import { CONTEXT_KEY } from "../../constant";
+  import type { Writable } from "svelte/store";
 
+  const historyCommands: Writable<any[]> = getContext(CONTEXT_KEY.$HISTORY);
 
   function getLast10History() {
     return $historyCommands.slice(-10);

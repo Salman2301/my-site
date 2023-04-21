@@ -1,16 +1,17 @@
-import { tick } from 'svelte';
+import { getContext, tick } from 'svelte';
 import { Writable, get, writable } from 'svelte/store';
-import { ComponentList, ComponentListKey } from '@component/commands/map';
+import { ComponentList, ComponentListKey } from '@/lib/component/Terminal/commands/map';
+import { CONTEXT_KEY } from '../constant';
 
-interface Components {
+export interface Components {
   key: string;
   component: any;
   props: Record<string, unknown>;
 }
 
-export const components: Writable<Components[]> = writable([]);
 
 export async function newComponent(
+  components: Writable<Components[]>,
   key: ComponentListKey,
   props: Record<string, unknown> = {}
 ) {
@@ -20,6 +21,7 @@ export async function newComponent(
     component: ComponentList[key],
     props,
   });
+  console.log($components);
   components.set($components);
   await tick();
 }

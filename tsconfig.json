@@ -16,7 +16,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@component/*": ["src/lib/component/*"],
-      "@store/*": ["src/lib/store/*"],
+      "@commands/*": ["src/lib/component/Terminal/commands/*"],
+      "@store/*": ["src/lib/component/Terminal/store/*"],
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],

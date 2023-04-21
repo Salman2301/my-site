@@ -1,19 +1,25 @@
 <script lang="ts">
-  import { tick } from "svelte";
-  import { historyCommands, setNewCommand } from "@store/command";
+  import { getContext, tick } from "svelte";
+  import { setNewCommand } from "@/lib/component/Terminal/store/command";
+  import type { Writable } from "svelte/store";
+  import type { Components } from "../store/components";
+  import { CONTEXT_KEY } from "../constant";
 
   export let componentInstance: HTMLDivElement;
   export let disabled: boolean = false;
-  
+  const components: Writable<Components[]> = getContext(CONTEXT_KEY.$COMPONENTS);
+
   let contenteditable: any = String(!disabled);
   $: contenteditable = String(!disabled);
+  
+  export const historyCommands: Writable<any[]> = getContext(CONTEXT_KEY.$HISTORY);
 
 
   let lastCommandPosition: number = undefined;
   const handleKeyDown = async e => {
     if(e.key === "Enter") {
       e.preventDefault();
-      await setNewCommand(componentInstance.textContent as any);
+      await setNewCommand(components, historyCommands, componentInstance.textContent as any);
       await tick();
       disabled = true;
     }
