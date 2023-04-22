@@ -21,7 +21,6 @@ export async function newComponent(
     component: ComponentList[key],
     props,
   });
-  console.log($components);
   components.set($components);
   await tick();
 }

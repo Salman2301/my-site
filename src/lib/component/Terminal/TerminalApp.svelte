@@ -1,13 +1,13 @@
 <script lang="ts">
   import { getContext, onMount } from "svelte";
   import { Components, newComponent } from "@store/components";
-  // import { setTheme } from "@commands/output/ThemeCommand.svelte";
   import { CONTEXT_KEY } from "./constant";
   import { setTheme } from '@/lib/store/theme';
 
   import type { Writable } from "svelte/store";
+  import type { TerminalContainerApp } from "@/lib/store/multiplexStore";
   
-
+  export let terminalApp: TerminalContainerApp = undefined;
   export const components: Writable<Components[]> = getContext(CONTEXT_KEY.$COMPONENTS);
 
   function handleFocus() {
@@ -28,12 +28,13 @@
 
 </script>
 
+
 <!-- svelte-ignore a11y-click-events-have-key-events -->
-<div class="container" on:click={handleFocus}>
+<div class="terminal-app-container" on:click={handleFocus} data-terminal-id={terminalApp?.id}>
   {#each $components as item}
     <svelte:component
       this={item.component}
-      {...item.props}
+      {...item.props }
       bind:componentInstance={item.props.componentInstance}
     />
   {/each}
@@ -41,8 +42,7 @@
 
 
 <style lang="postcss">
-  .container {
-    /* position: absolute; */
+  .terminal-app-container {
     bottom:0;
     right: 0;
     width: 100%;

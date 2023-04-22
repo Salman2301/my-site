@@ -1,21 +1,21 @@
 <script lang="ts">
   import TerminalMultiplex from "./lib/component/Terminal/TerminalMultiplex.svelte";
-  import { terminalContainer } from "./lib/store/multiplexStore";
+  import { terminalMultiplexStore } from "./lib/store/multiplexStore";
 
 </script>
 
-
 <div class="container">
-  <TerminalMultiplex {terminalContainer} />
+  <TerminalMultiplex terminalContainer={$terminalMultiplexStore} />
 </div>
 
 
 <style lang="postcss">
   .container {
     display: flex;
-    width: 100vw;
-    max-width: 100vw;
-    max-height: 100vh;
-    height: 100vh;
+    width: calc(100vw - 12px);
+    max-width: calc(100vw - 12px);
+    max-height: calc(100vh - 12px);
+    height: calc(100vh - 12px);
+    @apply m-1;
   }
 </style>

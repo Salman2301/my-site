@@ -1,7 +1,8 @@
 import { tick } from 'svelte';
 import { Components, newComponent } from './components';
-import type { Writable } from 'svelte/store';
+import { Writable, get } from 'svelte/store';
 import { setTheme, themes } from '@/lib/store/theme';
+import { addLayout, removeTerminal } from '@/lib/store/multiplexStore';
 
 
 export const availableCommands = {
@@ -29,6 +30,14 @@ export const availableCommands = {
     description: 'set the theme for the page',
     action: (components, command) => setThemeCommand(components, command),
   },
+  split: {
+    description: 'split the terminal into two',
+    action: (components, command) => splitCommand(components, command),
+  },
+  exit: {
+    description: 'exit the terminal',
+    action: (components) => exitCommand(components, 'exit'),
+  }
 } as const;
 
 export type CommandKey = keyof typeof availableCommands;
@@ -43,7 +52,7 @@ export async function setNewCommand(components:Writable<Components[]>, historyCo
 }
 
 
-export async function setThemeCommand(component, command: string) {
+export function setThemeCommand(component, command: string) {
   if(!command) return;
   const [_, name] = command.split(" ");
   if (name === undefined) {
@@ -55,6 +64,27 @@ export async function setThemeCommand(component, command: string) {
   else {
     newComponent(component, "error", { message: `Theme ${name} not found`})
   }
+}
+
+export function splitCommand(component, command) {
+  const terminalId = getTerminalId(component);
+  const [ _, mode ] = command.split(" ");
+  if( mode === "v" ) addLayout("vertical", terminalId);
+  else if( mode === "h" || mode === undefined ) addLayout("horizontal", terminalId);
+}
+
+export function exitCommand(component, command) {
+  const terminalId = getTerminalId(component);
+  removeTerminal(terminalId);
+}
+
+function getTerminalId(component): string {
+  
+  const $component:[Components] = get(component);
+  const instance = $component[0].props.componentInstance;
+  if (!instance) return;
+  const terminalId = (instance as HTMLElement)?.parentElement?.getAttribute?.("data-terminal-id");
+  return terminalId;
 }
 
 export async function handleCommand(components: Writable<Components[]>,command: CommandKey) {
