@@ -31,6 +31,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <div class="terminal-app-container" on:click={handleFocus} data-terminal-id={terminalApp?.id}>
+  <!-- <input value={terminalApp.id}> -->
   {#each $components as item}
     <svelte:component
       this={item.component}

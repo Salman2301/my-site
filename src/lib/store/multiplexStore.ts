@@ -1,6 +1,5 @@
 import { Writable, get, writable } from "svelte/store";
-
-const randomId = () => String(Date.now() * Math.random());
+import { v1 as randomId } from "uuid";
 
 export type TerminalContainer = (TerminalContainerApp | TerminalContainerLayout);
 
@@ -33,7 +32,7 @@ export const terminalMultiplexStore: Writable<TerminalContainer[]> =
       return $terminalMultiplexStore.map(item => {
         if (item.type === "layout") {
           let foundItem = item.children.find(e => e.id === id);
-          if (foundItem) return foundItem;
+          if (foundItem) return item.children.find(e => e.id !== id);
           return { ...item, children: removeTerminal(item.children) };
         }
         return item;
