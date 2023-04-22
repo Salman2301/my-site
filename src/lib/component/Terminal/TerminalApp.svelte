@@ -3,6 +3,7 @@
   import { Components, newComponent } from "@store/components";
   // import { setTheme } from "@commands/output/ThemeCommand.svelte";
   import { CONTEXT_KEY } from "./constant";
+  import { setTheme } from '@/lib/store/theme';
 
   import type { Writable } from "svelte/store";
   
@@ -21,7 +22,7 @@
     newComponent(components, "input");
 
     const currTheme = localStorage.getItem("curr-theme");
-    // if( currTheme ) setTheme(currTheme);
+    if( currTheme ) setTheme(currTheme);
 
   });
 
@@ -42,9 +43,12 @@
 <style lang="postcss">
   .container {
     /* position: absolute; */
+    bottom:0;
+    right: 0;
     width: 100%;
     max-width: 100%;
-    height: 100vh;
+    height: 100%;
+    max-height: 100%;
     overflow: scroll;
     @apply bg-bg1;
     @apply text-t2;
