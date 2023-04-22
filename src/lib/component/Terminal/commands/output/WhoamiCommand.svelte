@@ -157,7 +157,7 @@
 
   .symbol {
     font-family: monospace;
-    @apply flex justify-center gap-1;
+    @apply flex justify-between gap-1;
   }
   .body-content {
     width: 100%;
