@@ -50,7 +50,7 @@
     max-width: 100%;
     height: 100%;
     max-height: 100%;
-    overflow: scroll;
+    overflow: auto;
     @apply bg-bg1;
     @apply text-t2;
     @apply px-4;

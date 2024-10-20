@@ -19,7 +19,7 @@ jobs:
 
       - name: Install and Build
         run: |
-          npm ci --legacy-peer-deps
+          rm -rf node_modules && yarn install --frozen-lockfile
           npm run build
           
       - name: Deploy to GitHub Pages
