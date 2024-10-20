@@ -1,9 +1,9 @@
-import { tick } from 'svelte';
 import { Components, newComponent } from './components';
 import { Writable, get } from 'svelte/store';
-import { setTheme, themes } from '@/lib/store/theme';
 import { addLayout, removeTerminal } from '@/lib/store/multiplexStore';
+import { setTheme, themes } from '@/lib/store/theme';
 
+import { tick } from 'svelte';
 
 export const availableCommands = {
   clear: {
@@ -18,6 +18,10 @@ export const availableCommands = {
     description: 'shows information about the site',
     action: (components) => newComponent(components, 'whoami'),
   },
+  snake: {
+    description: 'play snake',
+    action: (components) => newComponent(components, 'snake'),
+  },
   history: {
     description: 'shows a list of commands you have used',
     action: (components) => newComponent(components, 'history'),
@@ -31,7 +35,7 @@ export const availableCommands = {
     action: (components, command) => setThemeCommand(components, command),
   },
   split: {
-    description: 'split the terminal into two',
+    description: 'split the terminal into two use "split h" or "split v" (default is horizontal)',
     action: (components, command) => splitCommand(components, command),
   },
   exit: {
@@ -42,7 +46,7 @@ export const availableCommands = {
 
 export type CommandKey = keyof typeof availableCommands;
 
-export async function setNewCommand(components:Writable<Components[]>, historyCommands: Writable<string[]>, command: any) {
+export async function setNewCommand(components: Writable<Components[]>, historyCommands: Writable<string[]>, command: any) {
   if (command === '') newComponent(components, 'input');
   if (!command) return;
 
@@ -53,24 +57,24 @@ export async function setNewCommand(components:Writable<Components[]>, historyCo
 
 
 export function setThemeCommand(component, command: string) {
-  if(!command) return;
+  if (!command) return;
   const [_, name] = command.split(" ");
   if (name === undefined) {
     newComponent(component, "theme");
   }
-  else  if (name in themes) {
+  else if (name in themes) {
     setTheme(command)
   }
   else {
-    newComponent(component, "error", { message: `Theme ${name} not found`})
+    newComponent(component, "error", { message: `Theme ${name} not found` })
   }
 }
 
 export function splitCommand(component, command) {
   const terminalId = getTerminalId(component);
-  const [ _, mode ] = command.split(" ");
-  if( mode === "v" ) addLayout("vertical", terminalId);
-  else if( mode === "h" || mode === undefined ) addLayout("horizontal", terminalId);
+  const [_, mode] = command.split(" ");
+  if (mode === "v") addLayout("vertical", terminalId);
+  else if (mode === "h" || mode === undefined) addLayout("horizontal", terminalId);
 }
 
 export function exitCommand(component, command) {
@@ -79,15 +83,15 @@ export function exitCommand(component, command) {
 }
 
 function getTerminalId(component): string {
-  
-  const $component:[Components] = get(component);
+
+  const $component: [Components] = get(component);
   const instance = $component[0].props.componentInstance;
   if (!instance) return;
   const terminalId = (instance as HTMLElement)?.parentElement?.getAttribute?.("data-terminal-id");
   return terminalId;
 }
 
-export async function handleCommand(components: Writable<Components[]>,command: CommandKey) {
+export async function handleCommand(components: Writable<Components[]>, command: CommandKey) {
   if (!command) return;
   const [firstWord] = command.split(' ');
   if (!Object.keys(availableCommands).includes(firstWord)) {

@@ -31,7 +31,7 @@
 
 <style lang="postcss">
   .heading {
-    @apply mt-1 mb-4;
+    @apply mt-1 mb-2;
     @apply text-t1;
   }
   li {
