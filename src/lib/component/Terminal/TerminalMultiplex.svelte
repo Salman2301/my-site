@@ -5,6 +5,8 @@
   export let terminalContainer: TerminalContainer[];
   export let mode: TerminalContainerLayout["mode"] = undefined;
 
+  export let sayHello: boolean = true
+
 </script>
 
 <div
@@ -18,11 +20,12 @@
         <svelte:self 
           terminalContainer={terminal.children}
           mode={terminal.mode}
+          sayHello={false}
         />
       </div>
     {:else if terminal.type === "app"}
       <div class="app">
-        <Terminal terminalApp={terminal}/>
+        <Terminal terminalApp={terminal} sayHello={sayHello} />
       </div>
     {/if}
   {/each}

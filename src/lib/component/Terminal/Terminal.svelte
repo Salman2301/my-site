@@ -4,8 +4,9 @@
   import type { TerminalContainerApp } from "@/lib/store/multiplexStore";
 
   export let terminalApp: TerminalContainerApp = undefined;
+  export let sayHello: boolean = true;
 </script>
 
 <Store>
-  <TerminalApp {terminalApp}/>
+  <TerminalApp {terminalApp} sayHello={sayHello}/>
 </Store>

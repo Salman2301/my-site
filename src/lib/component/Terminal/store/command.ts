@@ -7,7 +7,7 @@ import { tick } from 'svelte';
 
 export const availableCommands = {
   clear: {
-    description: 'clears the terminal',
+    description: 'clears the current terminal instance',
     action: (components) => components.set([]),
   },
   help: {
@@ -15,11 +15,11 @@ export const availableCommands = {
     action: (components) => newComponent(components, 'help'),
   },
   whoami: {
-    description: 'shows information about the site',
+    description: 'shows information about the author',
     action: (components) => newComponent(components, 'whoami'),
   },
   snake: {
-    description: 'play snake',
+    description: 'play snake game',
     action: (components) => newComponent(components, 'snake'),
   },
   history: {
@@ -31,7 +31,7 @@ export const availableCommands = {
     action: (components) => newComponent(components, 'time'),
   },
   theme: {
-    description: 'set the theme for the page',
+    description: 'set the theme for the entire site',
     action: (components, command) => setThemeCommand(components, command),
   },
   split: {
@@ -39,7 +39,7 @@ export const availableCommands = {
     action: (components, command) => splitCommand(components, command),
   },
   exit: {
-    description: 'exit the terminal',
+    description: 'exit/close the terminal',
     action: (components) => exitCommand(components, 'exit'),
   }
 } as const;

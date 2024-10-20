@@ -8,6 +8,7 @@
   import type { TerminalContainerApp } from "@/lib/store/multiplexStore";
   
   export let terminalApp: TerminalContainerApp = undefined;
+  export let sayHello: boolean = true;
   export const components: Writable<Components[]> = getContext(CONTEXT_KEY.$COMPONENTS);
 
   function handleFocus() {
@@ -19,8 +20,13 @@
   }
 
   onMount(()=>{
-    newComponent(components, "input");
+    
+    if(sayHello) {
+      newComponent(components, "whoami");
+      newComponent(components, "help");
+    }
 
+    newComponent(components, "input");
     const currTheme = localStorage.getItem("curr-theme");
     if( currTheme ) setTheme(currTheme);
 
