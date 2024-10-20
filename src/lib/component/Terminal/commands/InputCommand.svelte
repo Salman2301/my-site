@@ -1,9 +1,10 @@
 <script lang="ts">
   import { getContext, tick } from "svelte";
   import { setNewCommand } from "@/lib/component/Terminal/store/command";
+  import { CONTEXT_KEY } from "../constant";
+  
   import type { Writable } from "svelte/store";
   import type { Components } from "../store/components";
-  import { CONTEXT_KEY } from "../constant";
 
   export let componentInstance: HTMLDivElement;
   export let disabled: boolean = false;

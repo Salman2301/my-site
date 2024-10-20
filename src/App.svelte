@@ -1,13 +1,12 @@
 <script lang="ts">
-  import TerminalMultiplex from "./lib/component/Terminal/TerminalMultiplex.svelte";
-  import { terminalMultiplexStore } from "./lib/store/multiplexStore";
-
+  import TerminalMultiplex from './lib/component/Terminal/TerminalMultiplex.svelte';
+  import { terminalMultiplexStore } from './lib/store/multiplexStore';
 </script>
 
 <div class="container">
   <TerminalMultiplex terminalContainer={$terminalMultiplexStore} />
+  <!-- <DebugInfo /> -->
 </div>
-
 
 <style lang="postcss">
   .container {
