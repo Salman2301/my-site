@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { icons } from "@component/icon/map";
+  import { icons } from '@component/icon/map';
 
   export let links = [
     {
@@ -10,14 +10,14 @@
     {
       name: 'Twitter',
       url: 'https://twitter.com/salman2301',
-      icon: 'twitter'
+      icon: 'twitter',
     },
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/in/asalman2301/',
-      icon: 'linkedin'
-    }
-  ]
+      icon: 'linkedin',
+    },
+  ];
 </script>
 
 <div class="header">
@@ -25,7 +25,7 @@
   <h1>ABOUT ME</h1>
   <div class="full-border-style"></div>
 </div>
-
+<!-- prettier-ignore-start -->
 <div class="body-content">
   <div class="symbol">
     <span>
@@ -77,29 +77,32 @@
       <p>██║ ╚████║</p>
       <p>╚═╝  ╚═══╝</p>
     </span>
-
-
   </div>
+<!-- prettier-ignore-end -->
   <p>
-    Hello there, welcome to my site! I am <span class="high-light">SALMAN</span>, a full stack developer from India 🇮🇳. I have 4+ years experience in web development. I am passionate about web development and love to learn new things!
+    Hello there, welcome to my site! I am <span class="high-light">SALMAN</span
+    >, a full stack developer from India 🇮🇳. I have 5+ years experience in web
+    development. Work mostly with React, NextJS, NodeJS, Typescript,
+    TailwindCSS, GraphQL, Postgres, Redis, Docker, Kubernetes, etc.
   </p>
-  <br>
-  <p>I am currently working as a <span class="high-light">full stack developer</span> at a startup.</p>
-
+  <br />
+  <p>
+    I am currently working as a <span class="high-light"
+      >full stack developer</span
+    >
+    at
+    <span><a href="https://www.montotech.com/" target="_blank">Monto</a></span>.
+  </p>
 </div>
 
 <p class="header-label text-t1">Social links:</p>
 <ul>
   {#each links as link}
-    <a
-      href="{link.url}"
-      target="_blank"
-      class="btn"
-    >
+    <a href={link.url} target="_blank" class="btn">
       <div class="icon" style="scale:0.85">
         <svelte:component this={icons[link.icon]} />
       </div>
-     <li>
+      <li>
         {link.name}
       </li>
     </a>
@@ -124,9 +127,6 @@
     @apply font-light text-sm;
   }
 
-  a {
-    @apply flex items-center justify-center;
-  }
 
   ul {
     @apply flex gap-2 flex-wrap;
@@ -137,7 +137,7 @@
     @apply text-center rounded;
     @apply cursor-pointer;
     @apply mb-4 px-4;
-    @apply flex justify-start gap-2;
+    @apply flex justify-start items-center gap-2;
   }
 
   .btn:hover {
@@ -207,7 +207,7 @@
     animation-delay: 1s;
   }
 
-  @keyframes TextColor { 
+  @keyframes TextColor {
     0% {
       transform: scale(1.05);
       margin-top: 0px;
